@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Movie from "./components/Movie";
+import Movies from "./components/Movies";
+import Search from "./components/Search";
 
 // api here for now
 // const FEATURED_API = `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.MOVIE_APP_API_KEY}&page=1`;
@@ -21,13 +22,28 @@ const App = () => {
     fetchData();
   }, []);
 
+  const searchMovies = async (text) => {
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_MOVIE_APP_API_KEY}&language=en-US&page=1&include_adult=false&query=${text}`
+    );
+    setMovies(response.data.results);
+  };
+
+  const clearSearch = () => {
+    setMovies([]);
+  };
+
   return (
-    <div>
-      {movies.map((movie) => (
-        <Movie key={movie.id} {...movie} />
-      ))}
-      ;
-    </div>
+    <>
+      <Search
+        searchMovies={searchMovies}
+        clearSearch={clearSearch}
+        showClear={movies.length > 0 ? true : false}
+      />
+      <div className="container">
+        <Movies movies={movies} />
+      </div>
+    </>
   );
 };
 
