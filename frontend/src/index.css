@@ -19,8 +19,9 @@ body {
   overflow: hidden;
 }
 .movie img {
-  max-width: 100%;
-  max-height: max-content;
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
 }
 .container {
   display: flex;
