@@ -89,3 +89,19 @@ body {
   background-color: #ccc;
   opacity: 0.7;
 }
+/* RATING span color */
+.rating-tag {
+  padding: 0.4rem;
+  border-radius: 6px;
+  background-color: #22254b;
+}
+
+.rating-tag.green {
+  color: rgb(20, 206, 20);
+}
+.rating-tag.orange {
+  color: rgb(255, 182, 45);
+}
+.rating-tag.red {
+  color: rgb(190, 0, 0);
+}
